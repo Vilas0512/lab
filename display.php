@@ -1,29 +1,3 @@
-<?php
-// Database connection
-$servername = "localhost";
-$username = "root";
-$password = "";     
-$dbname = "registration_db";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['clear'])) {
-    // Clear all registrations
-    $conn->query("DELETE FROM registrations");
-    echo "<script>alert('All registrations have been cleared!'); window.location.href='registrations.php';</script>";
-}
-
-// Fetch all registrations from the database
-$sql = "SELECT id, name, email, age FROM registrations";
-$result = $conn->query($sql);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
